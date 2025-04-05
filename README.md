@@ -1,7 +1,6 @@
 # お天気通知
-お天気情報を取得して叫びます
+お天気情報を取得してdiscordに飛ばします
 
-# 使用技術
+# 環境
 - php7.4
-- voicebox
-- docker
+- discord
