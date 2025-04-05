@@ -1,7 +1,7 @@
 <?php
   date_default_timezone_set("Asia/Tokyo");
   /**
-  * 天気情報を取;;得し、必要情報からテキストを作成
+  * 天気情報を取得し、必要情報からテキストを作成
   * @return String APIから取得した情報を元に生成したテキスト
   */
   function getWeatherInfoTxt(){ 
@@ -46,11 +46,6 @@
   */
   function speakWeatherText($text){
     $speaker_id=1;
-    //voiceboxコンテナの起動
-    //$command = 'docker run --rm -d -p 127.0.0.1:50021:50021 voicevox/voicevox_engine:cpu-ubuntu20.04-latest';
-    //$output = shell_exec($command);
-    //$containerId = trim(shell_exec("docker ps -q --filter ancestor=voicevox/voicevox_engine:cpu-ubuntu20.04-latest"));
-    //echo $containerId;
     $url_query = "http://127.0.0.1:50021/audio_query?text=" . urlencode($text) . "&speaker=" . $speaker_id;
     $ch = curl_init($url_query);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -70,7 +65,7 @@
     $audio_data = curl_exec($ch);
     curl_close($ch);
 
-    file_put_contents("voice.wav", $audio_data);
+    file_put_contents("data/voice.wav", $audio_data);
   }
-  $text = getWeatherInfoTxt();
-  speakWeatherText($text);
+  echo nl2br(preg_replace("/\n{2,}/", "\n", getWeatherInfoTxt()));
+  //speakWeatherText($text);
