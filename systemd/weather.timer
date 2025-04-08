@@ -1,0 +1,10 @@
+[Unit]
+Description=Weather report to discord at 06:30 and 21:00 daily
+
+[Timer]
+OnCalendar=*-*-* 06:30:00
+OnCalendar=*-*-* 21:00:00
+Unit=weather.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=weather report to discord
+
+[Service]
+User=yuki
+ExecStart=docker exec web php /var/www/html/weather_report/Weather.php
+
+[Install]
+WantedBy=multi-user.target
