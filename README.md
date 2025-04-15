@@ -5,7 +5,7 @@ Linux上でsystemd登録することで定期実行を実現します
 何故かPHPで作成。デフォルトは横浜の天気を取得するようにしています
 
 # 使用技術等
-- php7.4
+- php7.4(docker)
 - discord API
 - systemd
 
